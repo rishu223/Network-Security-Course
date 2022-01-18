@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container p-5">
+    <div class="row">
+        <div class="col">
+            <h1>Plain Text</h1>
+        </div>
+        <div class="col">
+            <h1>Cipher Text</h1>
+        </div>
+      </div>
+      <!-- <div class="row">
+        
+
+          <form action="" method="post">
+            <div class="col-5">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" >{{ plainTxt }}</textarea>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary">Encrypt ==></button>
+            </div>    
+          </form>
+          <form action="" method="post">
+            <div class="col-5">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" >{{ plainTxt }}</textarea>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary">Encrypt ==></button>
+            </div>    
+          </form>
+
+    </div> -->
+      <div class="row">
+          <div class="col form-group p-3">
+              <form action="" method="post" id="encrypt">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="encrypt">
+                    <div class="row">
+                        <input style="height:200px;font-size:14pt;text-align: top-left;"type="text" value="{{ plainTxt }}" name="plainTxt" >
+                    </div>
+                    <div class="row">
+                        <input type="submit" class="btn btn-primary" value="Encrypt">
+                    </div>
+                </form>
+          </div>
+          <div class="col form-group p-3">
+            <form action="" method="post" id="decrypt">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="decrypt">
+                <div class="row">
+                    <input style="height:200px;font-size:14pt;text-align: top-left;"type="text" value="{{ cipherTxt }}" name="cipherTxt">
+                </div>
+                <div class="row">
+                    <input type="submit" class="btn btn-primary" value="Decrypt">
+                </div>
+            </form>
+          </div>
+
+       </div>
+</div>
+{% endblock content %}
